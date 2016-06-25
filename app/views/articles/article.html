@@ -1,0 +1,316 @@
+<style>
+.hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+.hovereffect .overlay {
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+	top: auto;
+	bottom: 0;
+	padding: 1em;
+	height: 4.75em;
+	--background: #79FAC4;
+  background: #009688;
+	--color: #3c4a50;
+  color: #fff;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,100%,0);
+	transform: translate3d(0,100%,0);
+}
+
+.hovereffect img {
+    display: block;
+    position: relative;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+}
+
+.hovereffect:hover img {
+-webkit-transform: translate3d(0,-10%,0);
+	transform: translate3d(0,-10%,0);
+}
+
+.hovereffect h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+	float: left;
+	margin: 0px;
+	display: inline-block;
+}
+
+.hovereffect a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    text-transform: uppercase;
+	color: #fff;
+	border: 1px solid #fff;
+	margin: 50px 0 0 0;
+	background-color: transparent;
+}
+.hovereffect a.info:hover {
+    box-shadow: 0 0 5px #fff;
+}
+
+
+.hovereffect p.icon-links a {
+	float: right;
+	--color: #3c4a50;
+  color: #fff;
+	font-size: 1.4em;
+}
+
+.hovereffect:hover p.icon-links a:hover,
+.hovereffect:hover p.icon-links a:focus {
+	color: #252d31;
+}
+
+.hovereffect h2,
+.hovereffect p.icon-links a {
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,200%,0);
+	transform: translate3d(0,200%,0);
+}
+
+.hovereffect p.icon-links a span:before {
+	display: inline-block;
+	padding: 8px 10px;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.hovereffect:hover .overlay,
+.hovereffect:hover h2,
+.hovereffect:hover p.icon-links a {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.hovereffect:hover h2 {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+}
+
+.hovereffect:hover p.icon-links a:nth-child(3) {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.hovereffect:hover p.icon-links a:nth-child(2) {
+	-webkit-transition-delay: 0.15s;
+	transition-delay: 0.15s;
+}
+
+.hovereffect:hover p.icon-links a:first-child {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+</style>
+<style>
+.features {
+    float: right;
+    width: 300px;
+    padding-left: 20px;
+}
+.features .heading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.drop {
+    padding: 15px;
+    border: 2px #f1f1f1 dashed;
+    border-radius: 5px;
+    line-height: 34px;
+}
+.drop.drag-over {
+    background: #5CB85C;
+    color: #fff
+}
+.transfer-box {
+    margin-bottom: 5px;
+}
+.transfer-box .progress {
+    margin-bottom: 0;
+}
+
+.thumbnail {
+    line-height: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    word-break: normal;
+}
+.thumbnail img {
+    max-width: 200px;
+    max-height: 150px;
+}
+
+.gallery-box {
+    width: 200px;
+    padding: 5px;
+    margin: 7px;
+    --float: left;
+    display: inline-block;;
+    min-height: 200px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+.gallery-box .progress {
+    margin-bottom: 0;
+}
+.gallery-box .thumbnail {
+    height: 188px;
+    width: 188px;
+}
+.gallery-box .title {
+    height: 22px;
+    overflow: hidden;
+    display: block;
+}
+</style>
+
+<div class="card-header jumbotron">
+    <h2>{{article.name}}
+      <small>Listo para crear un nuevo articulo?</small>
+    </h2>
+
+    <ul class="actions"><!-- classes removed: ah-actions a-alt-->
+      <li>
+        <button class="btn btn-success btn-lg waves-effect" ng-click="save()">Guardar</button>
+      </li>
+    </ul>
+
+    <ul class="tab-nav tn-justified">
+        <li class="waves-effect" ng-class="{'active': tabs.info}"><a href="" ng-click="changetab('info')">Información</a></li>
+        <li class="waves-effect" ng-class="{'active': tabs.images}"><a href="" ng-click="changetab('images')">Imagenes</a></li>
+        <!--li class="waves-effect" ng-class="{'active': tabs.stats}"><a href="" ng-click="changetab('stats')">Estadísticas</a></li-->
+    </ul>
+</div>
+
+<div class="card-body card-padding">
+  <!--Info tab -->
+  <div class="row" ng-show="tabs.info">
+    <div class="col-sm-12">
+      <div class="form-group">
+          <div class="fg-line">
+              <input type="text" class="form-control" ng-model="article.name" required placeholder="Nombre del Articulo">
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <div class="fg-line">
+          <label class="fg-label">Precio</label>
+          <input type="text" class="form-control" ng-model="article.price" required placeholder="Precio o valor unitario" ui-number-mask>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="form-group">
+        <div class="fg-line">
+          <label class="fg-label">Tags</label>
+          <!--input type="text" placeholder="Palabras clave para ayudar en las busquedas (ejemplo: tecnologia, aplicaciones, geek)"-->
+          <tags-input ng-model="article.tags" class="form-control" placeholder="tecnologia, aplicaciones, geek"></tags-input>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <div class="fg-line">
+          <label class="fg-label">Descripción</label>
+          <textarea class="form-control" rows="6" ng-model="article.description" required placeholder="Descripción de tu producto..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+          <div class="fg-line">
+            <label class="fg-label">Elíge las secciones a las cuales pertenece este artículo</label>
+            <div isteven-multi-select
+              input-model="allsections"
+              output-model="selectedSections"
+              button-label="name"
+              item-label="name"
+              tick-property="ticked"
+              translation="multiselecttranslation"
+              class="btn-group bootstrap-select show-tick">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Images tab -->
+  <div class="row" ng-show="tabs.images"
+    flow-init="" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+    flow-file-success="ImageUploadSucceed( $file, $message, $flow )">
+
+    <div class="drop" flow-drop="" ng-class="dropClass">
+      <div class="m-b-20 text-center">
+        <span class="btn btn-default" flow-btn=""><i class="zmdi zmdi-file-plus zmdi-hc-fw"></i> Subir imagen<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
+        <span class="btn btn-default" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory"><i class="zmdi zmdi-folder zmdi-hc-fw"></i> Subir directorio<input type="file" multiple="multiple" webkitdirectory="webkitdirectory" style="visibility: hidden; position: absolute;"></span>
+        <b>Ó</b>
+        Arrastra tus imágenes hasta aquí
+      </div>
+
+      <p class="text-center m-t-30" ng-show="!$flow.files || $flow.files.length <= 0"><i class="zmdi zmdi-cloud-download zmdi-hc-fw" style="font-size: 70px;"></i></p>
+
+      <!--div ng-repeat="file in $flow.files" class="gallery-box p-t-20">
+        <span class="title ng-binding">Screen Shot 2016-06-23 at 2.02.56 PM.png</span>
+        <div class="thumbnail" ng-show="$flow.files.length">
+          <img flow-img="file">
+        </div>
+        <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+          <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
+            <span class="sr-only ng-binding">1% Complete</span>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+          Remove
+        </a>
+      </div-->
+
+      <!--div class="wall-img-preview lightbox clearfix" style="margin: inherit;">
+        <div class="wip-item lightbox-item hovereffect" ng-repeat="file in $flow.files" flow-item="file">
+          <img flow-img="file">
+          <div class="overlay">
+            <h2>ver</h2>
+            <p class="icon-links">
+              <a href="" ng-click="file.cancel()">
+                <span><i class="zmdi zmdi-delete zmdi-hc-fw"></i></span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div-->
+      <ng-gallery images="$flow.files" template-url="views/articles/image-dialog-gallery-template.html"></ng-gallery>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+
+  <!--Stats tab -->
+  <div class="row" ng-show="tabs.stats">
+    Algunas estadisticas!!
+  </div>
+</div>
