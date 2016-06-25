@@ -1,5 +1,33 @@
+<<<<<<< HEAD
 /node_modules
 /dist
 /.tmp
 /.sass-cache
 /bower_components
+=======
+/build/
+/benchpress-build/
+.DS_Store
+gen_docs.disable
+test.disable
+regression/temp*.html
+performance/temp*.html
+.idea/workspace.xml
+*~
+*.swp
+angular.js.tmproj
+/node_modules/
+bower_components/
+angular.xcodeproj
+.idea
+*.iml
+.agignore
+.lvimrc
+libpeerconnection.log
+npm-debug.log
+/tmp/
+/scripts/bower/bower-*
+.vscode
+*.log
+*.stackdump
+>>>>>>> 5d38dd5f9f2562633339a34f92b6cef1b543c81f
