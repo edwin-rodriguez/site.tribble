@@ -25,6 +25,21 @@ var app = angular
     'ui.utils.masks'
   ])
 
+  //auth configs
+  .config(['$httpProvider', function($httpProvider){
+      var accessToken = sessionStorage.getItem("access_token");
+      $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+  }])
+  .run(['$rootScope','$state','authenticationService',function ($rootScope,$state,authenticationService) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+      if (toState.data && toState.data.requireLogin && authenticationService.getAccessToken() === undefined) {
+        event.preventDefault();
+        $state.go('login'); // get me a login modal!
+      }
+    });
+  }])
+
+  //routes config
   .config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
 
     $urlRouterProvider
@@ -32,41 +47,99 @@ var app = angular
     .otherwise('/noencontrado');
 
     $stateProvider
-      .state('default', {
+      .state('404', {
+        url: '/noencontrado',
+        views: {
+          'main': {
+            templateUrl: 'views/public/404.html',
+            controller: function () {}
+          }
+        }
+      })
+      .state('login', {
+        url: '/ingresar',
+        views: {
+          'main': {
+            templateUrl: 'views/public/login.html',
+            controller: ['$scope','authenticationService','$state', function ($scope, authenticationService,$state) {
+              $scope.loginData = {
+                email: '',
+                password: ''
+              };
+              $scope.goLogin = function (){
+                authenticationService.login($scope.loginData.email, $scope.loginData.password)
+                  .then(function(data){
+                    $state.go('private.home');
+                  }, function(err){
+                    alert('error login!');
+                    console.log(err);
+                  });
+              }
+            }]
+          }
+        }
+      })
+      .state('signup', {
+        url: '/suscribirse',
+        views: {
+          'main': {
+            templateUrl: 'views/public/signup.html',
+            controller: function () {}
+          }
+        }
+      })
+      .state('forgotpassword', {
+        url: '/recuperarcontrasena',
+        views: {
+          'main': {
+            templateUrl: 'views/public/forgotpassword.html',
+            controller: function () {}
+          }
+        }
+      })
+
+      .state('private', {
+        abstract: true,
+        data: {
+          requireLogin: true
+        },
+        views: {
+          'main': {
+            templateUrl: 'index.main.html',
+          }
+        }
+      })
+      .state('private.home', {
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .state('about', {
+      .state('private.about', {
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .state('404', {
-        url: '/noencontrado',
-        templateUrl: 'views/404.html'
-      })
-      
+
       //articles
-      .state('articles', {
+      .state('private.articles', {
         url: '/articulos',
         templateUrl: 'views/articles/list.html',
         controller: 'ArticleCtrl'
       })
-      .state('articles_new', {
+      .state('private.articles_new', {
         url: '/articulos/nuevo',
         templateUrl: 'views/articles/article.html',
-        controller: 'ArticleDetailCtrl'
+        controller: 'ArticleDetailCtrl',
       })
-      .state('articles_view', {
+      .state('private.articles_view', {
         url: '/articulos/ver/:id',
         templateUrl: 'views/articles/article.html',
         controller: 'ArticleDetailCtrl'
       })
-
       ;
   }])
 
+  //image upload directive
   .directive('flowItem', [function() {
     return {
       'scope': false,
@@ -93,21 +166,6 @@ var app = angular
       }
     };
   }])
-  /*.config(['flowFactoryProvider', function (flowFactoryProvider) {
-    flowFactoryProvider.defaults = {
-      target: 'upload.php',
-      permanentErrors: [404, 500, 501],
-      maxChunkRetries: 1,
-      chunkRetryInterval: 5000,
-      simultaneousUploads: 4,
-      singleFile: true
-    };
-    flowFactoryProvider.on('catchAll', function (event) {
-      console.log('catchAll', arguments);
-    });
-    // Can be used with different implementations of Flow.js
-    // flowFactoryProvider.factory = fustyFlowFactory;
-  }]);*/
   .config(['flowFactoryProvider', function (flowFactoryProvider) {
     flowFactoryProvider.defaults = {
       target: 'http://localhost:5000/images/article',

@@ -1,0 +1,30 @@
+<div class="login" data-lbg="teal">
+    <!-- Login -->
+    <div class="l-block toggled">
+        <div class="lb-header palette-Teal bg">
+            <i class="zmdi zmdi-account-circle"></i>
+            Formulario de ingreso
+        </div>
+
+        <div class="lb-body">
+            <div class="form-group">
+                <div class="fg-line">
+                  <input type="text" class="form-control fg-input" ng-model="loginData.email" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="fg-line">
+                  <input type="password" class="form-control fg-input" ng-model="loginData.password" placeholder="Contraseña">
+                </div>
+            </div>
+
+            <button class="btn palette-Teal bg" ng-click="goLogin()">Ingresar</button>
+
+            <div class="m-t-20">
+                <a class="palette-Teal text d-block m-b-5" href="" ui-sref="signup">Suscribirme!</a>
+                <a href="" class="palette-Teal text" ui-sref="forgotpassword">Recuperar Contraseña</a>
+            </div>
+        </div>
+    </div>
+</div>
