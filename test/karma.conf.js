@@ -33,6 +33,7 @@ module.exports = function(config) {
       'bower_components/ngGallery/src/js/ngGallery.js',
       'bower_components/ng-tags-input/ng-tags-input.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-input-masks/angular-input-masks-standalone.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
