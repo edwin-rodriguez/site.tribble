@@ -7,16 +7,18 @@
  * # SignupCtrl
  * Controller of the sitetribbleApp
  */
-app.controller('SignupCtrl',['$scope','signupService','$state', function ($scope,signupService,$state) {
+app.controller('SignupCtrl',['$scope','signupService','$state','StoreRepository', function ($scope,signupService,$state,StoreRepository) {
   $scope.user = {
     fullname: null,
     email: null,
     password: null,
-    storeName: null,
   };
+  $scope.store = {
+    name: null,
+  }
 
   $scope.goSubscribe = function () {
-    //validate model
+    //validate user model
     if (!$scope.user.fullname || $scope.user.fullname.split(' ').length < 2){
       alert('Asegurate ingresar tu nombre completo, inclyendo al menos un Nombre y un Apellido.');
       return;
@@ -32,14 +34,32 @@ app.controller('SignupCtrl',['$scope','signupService','$state', function ($scope
       return;
     }
 
-    signupService.signup($scope.user.fullname, $scope.user.email, $scope.user.password)
-      .then(function(data){
-        alert('Tu cuenta ha sido creada! Bienvenido a Tribble!');
-        $state.go('login');
-      }, function(err){
-        alert('error in signup!');
-        console.log(err);
-      });
+    //validate store model
+    //TODO
+
+    //create store first
+    StoreRepository.save($scope.store, function(resp, headers){
+      //create user account
+      var customData = {
+        store: resp._id,
+      };
+      signupService.signup($scope.user.fullname, $scope.user.email, $scope.user.password, customData)
+        .then(function(data){
+          //update store to reference user
+          //TODO
+
+          //redirect to login page
+          alert('Tu cuenta ha sido creada! Bienvenido a Tribble!');
+          $state.go('login');
+        }, function(err){
+          alert('error in signup!');
+          console.log(err);
+        });
+
+    }, function(err){
+      alert('error in signup!');
+      console.log(err);
+    });
   };
 
 }]);
