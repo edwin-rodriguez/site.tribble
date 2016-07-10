@@ -6,6 +6,7 @@
 * @description
 * # sitetribbleApp
 *
+* 
 * Main module of the application.
 */
 var app = angular
