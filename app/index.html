@@ -1,159 +1,162 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Tribble!</title>
 
-      <!-- Vendor CSS -->
-      <link href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
-      <link href="assets/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-      <link href="assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-      <link href="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-      <link href="assets/vendors/bower_components/google-material-color/dist/palette.css" rel="stylesheet">
-      <!--link href="bower_components/angular-multiselect/multiselect.min.css" rel="stylesheet"-->
-      <!--link href="assets/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet"-->
-      <link href="bower_components/isteven-angular-multiselect/isteven-multi-select.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="bower_components/ngGallery/src/css/screen.css">
-      <link rel="stylesheet" type="text/css" href="bower_components/ngGallery/src/css/ngGallery.css">
-      <link rel="stylesheet" type="text/css" href="bower_components/ng-tags-input/ng-tags-input.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tribble!</title>
 
-      <!-- CSS -->
-      <link href="assets/css/app.min.1.css" rel="stylesheet">
-      <link href="assets/css/app.min.2.css" rel="stylesheet">
 
-  </head>
-  <body ng-app="sitetribbleApp" ng-controller="GlobalCtrl">
+  <!-- Vendor CSS -->
+  <link href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+  <link href="assets/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+  <link href="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+  <link href="assets/vendors/bower_components/google-material-color/dist/palette.css" rel="stylesheet">
+  <!--link href="bower_components/angular-multiselect/multiselect.min.css" rel="stylesheet"-->
+  <!--link href="assets/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet"-->
+  <link href="bower_components/isteven-angular-multiselect/isteven-multi-select.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="bower_components/ngGallery/src/css/screen.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/ngGallery/src/css/ngGallery.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/ng-tags-input/ng-tags-input.css">
 
-    <div ui-view="main">
+  <!-- CSS -->
+  <link href="assets/css/app.min.1.css" rel="stylesheet">
+  <link href="assets/css/app.min.2.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="sitetribbleApp" ng-controller="GlobalCtrl">
+  <div class="fb-like" data-share="true" data-width="450" data-show-faces="true">
+  </div>
+  <div ui-view="main"></div>
+
+  <div ui-view="header"></div>
+
+
+
+  <!-- Page Loader -->
+  <div class="page-loader palette-Teal bg">
+    <div class="preloader pl-xl pls-white">
+      <svg class="pl-circular" viewBox="25 25 50 50">
+        <circle class="plc-path" cx="50" cy="50" r="20" />
+      </svg>
     </div>
+  </div>
 
-    <div ui-view="header">
-    </div>
+  <!-- Older IE warning message -->
+  <!--[if lt IE 9]>
+<div class="ie-warning">
+<h1 class="c-white">Warning!!</h1>
+<p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+<div class="iew-container">
+<ul class="iew-download">
+<li>
+<a href="http://www.google.com/chrome/">
+<img src="assets/img/browsers/chrome.png" alt="">
+<img src="assets/img/browsers/chrome.png" alt="">
+<div>Chrome</div>
+</a>
+</li>
+<li>
+<a href="https://www.mozilla.org/en-US/firefox/new/">
+<img src="assets/img/browsers/firefox.png" alt="">
+<img src="assets/img/browsers/firefox.png" alt="">
+<div>Firefox</div>
+</a>
+</li>
+<li>
+<a href="http://www.opera.com">
+<img src="assets/img/browsers/opera.png" alt="">
+<img src="assets/img/browsers/opera.png" alt="">
+<div>Opera</div>
+</a>
+</li>
+<li>
+<a href="https://www.apple.com/safari/">
+<img src="assets/img/browsers/safari.png" alt="">
+<img src="assets/img/browsers/safari.png" alt="">
+<div>Safari</div>
+</a>
+</li>
+<li>
+<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+<img src="assets/img/browsers/ie.png" alt="">
+<img src="assets/img/browsers/ie.png" alt="">
+<div>IE (New)</div>
+</a>
+</li>
+</ul>
+</div>
+<p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
 
+  <!-- build:js(.) scripts/vendor-ng.js -->
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/flow.js/dist/flow.js"></script>
+  <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+  <script src="bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
+  <script src="bower_components/ngGallery/src/js/ngGallery.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
+  <!-- Javascript Libraries -->
+  <!-- build:js({.tmp,app}) scripts/vendor.js -->
+  <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="assets/vendors/bower_components/Waves/dist/waves.min.js"></script>
+  <script src="assets/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+  <script src="assets/vendors/bower_components/moment/min/moment.min.js"></script>
+  <script src="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+  <script src="assets/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+  <script src="assets/vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
+  <!--script src="assets/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script-->
+  <!--script src="bower_components/angular-multiselect/multiselect.min.js"></script-->
+  <script src="bower_components/flow.js/dist/flow.min.js"></script>
+  <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+  <script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
 
-    <!-- Page Loader -->
-    <div class="page-loader palette-Teal bg">
-        <div class="preloader pl-xl pls-white">
-            <svg class="pl-circular" viewBox="25 25 50 50">
-                <circle class="plc-path" cx="50" cy="50" r="20"/>
-            </svg>
-        </div>
-    </div>
+  <script src="assets/vendors/bower_components/flot/jquery.flot.js"></script>
+  <script src="assets/vendors/bower_components/flot/jquery.flot.resize.js"></script>
+  <script src="assets/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+  <script src="assets/vendors/sparklines/jquery.sparkline.min.js"></script>
+  <script src="assets/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+  <script src="assets/js/flot-charts/curved-line-chart.js"></script>
+  <script src="assets/js/flot-charts/line-chart.js"></script>
 
-    <!-- Older IE warning message -->
-    <!--[if lt IE 9]>
-        <div class="ie-warning">
-            <h1 class="c-white">Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="assets/img/browsers/chrome.png" alt="">
-                            <img src="assets/img/browsers/chrome.png" alt="">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="assets/img/browsers/firefox.png" alt="">
-                            <img src="assets/img/browsers/firefox.png" alt="">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="assets/img/browsers/opera.png" alt="">
-                            <img src="assets/img/browsers/opera.png" alt="">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="assets/img/browsers/safari.png" alt="">
-                            <img src="assets/img/browsers/safari.png" alt="">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="assets/img/browsers/ie.png" alt="">
-                            <img src="assets/img/browsers/ie.png" alt="">
-                            <div>IE (New)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>
-    <![endif]-->
+  <script src="assets/js/charts.js"></script>
 
-    <!-- build:js(.) scripts/vendor-ng.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/flow.js/dist/flow.js"></script>
-    <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
-    <script src="bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
-    <script src="bower_components/ngGallery/src/js/ngGallery.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <script src="assets/js/functions.js"></script>
+  <script src="assets/js/actions.js"></script>
+  <script src="assets/js/demo.js"></script>
+  <!-- endbuild -->
 
-    <!-- Javascript Libraries -->
-    <!-- build:js({.tmp,app}) scripts/vendor.js -->
-    <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/vendors/bower_components/Waves/dist/waves.min.js"></script>
-    <script src="assets/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-    <script src="assets/vendors/bower_components/moment/min/moment.min.js"></script>
-    <script src="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-    <script src="assets/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
-    <script src="assets/vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
-    <!--script src="assets/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script-->
-    <!--script src="bower_components/angular-multiselect/multiselect.min.js"></script-->
-    <script src="bower_components/flow.js/dist/flow.min.js"></script>
-    <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
-    <script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/app.repositories.js"></script>
+  <script src="scripts/controllers/global.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/articles/article.js"></script>
+  <script src="scripts/services/authenticationService.js"></script>
+  <!-- endbuild -->
 
-    <script src="assets/vendors/bower_components/flot/jquery.flot.js"></script>
-    <script src="assets/vendors/bower_components/flot/jquery.flot.resize.js"></script>
-    <script src="assets/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
-    <script src="assets/vendors/sparklines/jquery.sparkline.min.js"></script>
-    <script src="assets/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-    <script src="assets/js/flot-charts/curved-line-chart.js"></script>
-    <script src="assets/js/flot-charts/line-chart.js"></script>
+  <!-- Placeholder for IE9 -->
+  <!--[if IE 9 ]>
+<script src="assets/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+</body>
 
-    <script src="assets/js/charts.js"></script>
-
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/actions.js"></script>
-    <script src="assets/js/demo.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/app.repositories.js"></script>
-    <script src="scripts/controllers/global.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/controllers/articles/article.js"></script>
-    <script src="scripts/services/authenticationService.js"></script>
-    <!-- endbuild -->
-
-    <!-- Placeholder for IE9 -->
-    <!--[if IE 9 ]>
-    <script src="assets/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
-    <![endif]-->
-  </body>
 </html>
