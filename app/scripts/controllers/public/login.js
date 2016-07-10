@@ -9,7 +9,7 @@
  */
 app.controller('LoginCtrl',['$scope','authenticationService','$state', function ($scope, authenticationService,$state) {
   $scope.loginData = {
-    email: 'edwin3@rodriguez.com', //edwin3@rodriguez.com
+    email: 'test@account.com', //edwin3@rodriguez.com
     password: 'Admin123', //Admin123
   };
   $scope.goLogin = function (){
