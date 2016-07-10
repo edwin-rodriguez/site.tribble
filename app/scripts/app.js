@@ -6,7 +6,7 @@
  * @description
  * # sitetribbleApp
  *
-* 
+*
 * Main module of the application.
 */
 var app = angular
@@ -26,13 +26,41 @@ var app = angular
     'ui.utils.masks'
   ])
 
-  /**
-   * comments
-   */
-  .config(['$httpProvider', function ($httpProvider) {
-    var accessToken = sessionStorage.getItem("access_token");
-    $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+
+  //auth interceptor for Bearer token
+  .factory('authInterceptorService', ['$q', '$location'/*,'localStorageService'*/, function ($q, $location/*,localStorageService*/) {
+
+    var authInterceptorServiceFactory = {};
+
+    var _request = function (config) {
+      config.headers = config.headers || {};
+
+      //var authData = localStorageService.get('authorizationData');
+      var authData = sessionStorage.getItem("access_token");
+      if (authData) {
+          config.headers.Authorization = 'Bearer ' + authData;
+      }
+
+      return config;
+    };
+
+    var _responseError = function (rejection) {
+      if (rejection.status === 401) {
+        $location.path('/');
+      }
+      return $q.reject(rejection);
+    }
+
+    authInterceptorServiceFactory.request = _request;
+    authInterceptorServiceFactory.responseError = _responseError;
+
+    return authInterceptorServiceFactory;
   }])
+  .config(['$httpProvider',function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+  }])
+
+  //validate auth responses after route changes
   .run(['$rootScope', '$state', 'authenticationService', function ($rootScope, $state, authenticationService) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
       var token = authenticationService.getAccessToken();
