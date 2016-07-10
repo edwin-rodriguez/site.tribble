@@ -10,6 +10,6 @@
 app.controller('GlobalCtrl', ['$scope','authenticationService','$state',function ($scope, authenticationService,$state) {
   $scope.logout = function (){
     authenticationService.logout();
-    $state.go('private.home');
+    $state.go('login');
   };
 }]);

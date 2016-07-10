@@ -10,7 +10,6 @@ app.factory("authenticationService", ["$http", "$q", "$window", function ($http,
 
           $http.post(URL_AUTH_API+"authenticate", { login: email, password: password })
               .then(function (result) {
-                console.log(result.data);
                 var accessToken = result.data;
                 $window.sessionStorage[ACCESS_TOKEN_KEY] = accessToken;
                 deferred.resolve(accessToken);

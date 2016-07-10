@@ -1,11 +1,11 @@
 'use strict';
 
 /**
-* @ngdoc overview
-* @name sitetribbleApp
-* @description
-* # sitetribbleApp
-*
+ * @ngdoc overview
+ * @name sitetribbleApp
+ * @description
+ * # sitetribbleApp
+ *
 * 
 * Main module of the application.
 */
@@ -35,9 +35,17 @@ var app = angular
   }])
   .run(['$rootScope', '$state', 'authenticationService', function ($rootScope, $state, authenticationService) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-      if (toState.data && toState.data.requireLogin && authenticationService.getAccessToken() === undefined) {
-        event.preventDefault();
-        $state.go('login'); // get me a login modal!
+      var token = authenticationService.getAccessToken();
+      if (toState.data && toState.data.requireLogin) {
+        if (token === undefined) {
+          event.preventDefault();
+          $state.go('login'); // get me a login modal!
+        }
+      } else {
+        if (token != undefined) {
+          event.preventDefault();
+          $state.go('private.home'); // get me a login modal!
+        }
       }
     });
   }])
@@ -64,30 +72,16 @@ var app = angular
         views: {
           'main': {
             templateUrl: 'views/public/login.html',
-            controller: ['$scope', 'authenticationService', '$state', function ($scope, authenticationService, $state) {
-              $scope.loginData = {
-                email: '',
-                password: ''
-              };
-              $scope.goLogin = function () {
-                authenticationService.login($scope.loginData.email, $scope.loginData.password)
-                  .then(function (data) {
-                    $state.go('private.home');
-                  }, function (err) {
-                    alert('error login!');
-                    console.log(err);
-                  });
-              }
-            }]
+            controller: 'LoginCtrl'
           }
         }
       })
       .state('signup', {
-        url: '/suscribirse',
+        url: '/suscribirme',
         views: {
           'main': {
             templateUrl: 'views/public/signup.html',
-            controller: function () { }
+            controller: 'SignupCtrl'
           }
         }
       })
@@ -116,11 +110,6 @@ var app = angular
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .state('private.about', {
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
 
       //articles
