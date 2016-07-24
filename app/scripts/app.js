@@ -131,6 +131,9 @@ var app = angular
         views: {
           'main': {
             templateUrl: 'index.main.html',
+            controller: function ($scope){
+              $scope.$parent.bodyClass = 'teal';
+            }
           }
         }
       })
@@ -138,6 +141,13 @@ var app = angular
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+
+      //store
+      .state('private.store', {
+        url: '/mitienda',
+        templateUrl: 'views/store/store.html',
+        controller: 'StoreCtrl'
       })
 
       //articles

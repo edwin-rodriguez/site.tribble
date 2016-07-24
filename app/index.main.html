@@ -1,7 +1,7 @@
-<div data-ma-header="teal">
+<div>
     <header id="header" class="media">
         <div class="pull-left h-logo">
-            <a href="index.html" class="hidden-xs">
+            <a href="" ui-sref="private.home" class="hidden-xs">
               Tribble
               <small>Bienvenido!</small>
           </a>
@@ -97,6 +97,9 @@
                     </li>
                     <li>
                         <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                    </li>
+                    <li>
+                        <a href="" ui-sref="private.store"><i class="zmdi zmdi-store"></i> Mi Tienda</a>
                     </li>
                     <li>
                         <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
@@ -429,10 +432,8 @@
 
         <section id="content">
             <div class="container">
-                <div class="card">
-                    <!--div ng-view=""></div-->
-                    <div ui-view></div>
-                </div>
+              <!--div ng-view=""></div-->
+              <div ui-view></div>
             </div>
         </section>
 

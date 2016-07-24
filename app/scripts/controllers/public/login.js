@@ -8,6 +8,8 @@
  * Controller of the sitetribbleApp
  */
 app.controller('LoginCtrl',['$scope','authenticationService','$state', function ($scope, authenticationService,$state) {
+  $scope.$parent.bodyClass = '';
+
   $scope.loginData = {
     email: 'test@account.com', //edwin3@rodriguez.com
     password: 'Admin123', //Admin123

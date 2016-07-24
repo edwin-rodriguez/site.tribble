@@ -24,6 +24,17 @@ app.factory("authenticationService", ["$http", "$q", "$window", function ($http,
       },
       getAccessToken: function () {
         return $window.sessionStorage[ACCESS_TOKEN_KEY];
+      },
+      getUser: function() {
+        var deferred = $q.defer();
+
+        $http.get(URL_AUTH_API+"authenticate").then(function(result){
+          deferred.resolve(result.data);
+        }, function(error) {
+          deferred.resolve(error);
+        });
+
+        return deferred.promise;
       }
   };
 }]);

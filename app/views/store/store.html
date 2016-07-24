@@ -1,0 +1,77 @@
+<div class="c-header">
+  <h2>
+    {{store.name}}
+    <span class="palette-Orange text"><!--i class="zmdi zmdi-store"></i--></span>
+    <small>{{store.alias}}</small>
+  </h2>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-header">
+        <h2>Datos Básicos</h2>
+        <ul class="actions"><!-- classes removed: ah-actions a-alt-->
+          <li>
+            <button class="btn btn-success btn-lg waves-effect" ng-click="save()">Guardar</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-body card-padding">
+        <!--Info tab -->
+        <div class="row" ng-show="tabs.info">
+          <div class="col-sm-12">
+            <div class="form-group">
+                <div class="fg-line">
+                  <label class="fg-label">Nombre</label>
+                  <input type="text" class="form-control" ng-model="store.name" required placeholder="Nombre de tú tienda">
+                </div>
+            </div>
+          </div>
+          <!--div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Alias</label>
+                <input type="text" class="form-control" ng-model="store.alias" required placeholder="Alias">
+              </div>
+            </div>
+          </div-->
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Sitio web</label>
+                <input type="text" class="form-control" ng-model="store.url" required placeholder="Sitio Web">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Tags</label>
+                <tags-input ng-model="selectedTags" class="form-control" placeholder="tecnologia, aplicaciones, geek"></tags-input>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Descripción</label>
+                <textarea class="form-control" rows="6" ng-model="store.description" required placeholder="Dile a tus clientes por qué tú tienda es la mejor!"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h2>Estadísticas</h2>
+      </div>
+      <div class="card-body card-padding">
+        Algunas estadisticas!!
+      </div>
+    </div>
+  </div>
+</div>
