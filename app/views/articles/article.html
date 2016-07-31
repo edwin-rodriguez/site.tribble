@@ -189,88 +189,157 @@
     <div class="col-sm-7">
       <div class="card">
         <div class="card-header jumbotron">
-          <h2>{{ article.name || "[Nombre del Articulo]" }}
+          <h2>{{ article.name || "[Tu Articulo]" }}
             <small>Listo para crear un nuevo articulo?</small>
           </h2>
-
-          <ul class="actions"><!-- classes removed: ah-actions a-alt-->
+          <!--ul class="actions">
             <li>
               <button class="btn btn-success btn-lg waves-effect" ng-click="save()">Guardar</button>
             </li>
-          </ul>
-          <div class="clear"></div>
+          </ul-->
 
           <ul class="tab-nav tn-justified">
-              <li class="waves-effect" ng-class="{'active': tabs.info}"><a href="" ng-click="changetab('info')">Datos Básicos</a></li>
-              <!--li class="waves-effect" ng-class="{'active': tabs.images}"><a href="" ng-click="changetab('images')">Imagenes</a></li-->
-              <li class="waves-effect" ng-class="{'active': tabs.stats}"><a href="" ng-click="changetab('stats')">Estadísticas</a></li>
+              <li class="waves-effect" ng-class="{'active': tabs.info}">
+                <a href="" ng-click="changetab('info')"><i class="zmdi zmdi-card-giftcard m-r-5"></i> Datos Básicos</a>
+              </li>
+              <li class="waves-effect" ng-class="{'active': tabs.networks}">
+                <a href="" ng-click="changetab('networks')"><i class="zmdi zmdi-share m-r-5"></i> Redes</a>
+              </li>
+              <li class="waves-effect" ng-class="{'active': tabs.stats}">
+                <a href="" ng-click="changetab('stats')"><i class="zmdi zmdi-chart m-r-5"></i> Estadísticas</a>
+              </li>
           </ul>
         </div>
 
-        <div class="card-body card-padding">
-          <!--Info tab -->
-          <div class="row" ng-show="tabs.info">
-            <div class="col-sm-12">
-              <div class="form-group">
-                  <div class="fg-line">
-                    <label class="fg-label">Nombre del Articulo</label>
-                    <input type="text" class="form-control" ng-model="article.name" required placeholder="Pon un nombre llamativo!">
-                  </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="form-group">
+        <!--Info tab -->
+        <div class="row card-body card-padding" ng-show="tabs.info">
+          <div class="col-sm-12">
+            <div class="form-group">
                 <div class="fg-line">
-                  <label class="fg-label">Precio</label>
-                  <input type="text" class="form-control" ng-model="article.price" required placeholder="Precio o valor unitario" ui-number-mask>
+                  <label class="fg-label">Nombre del Articulo</label>
+                  <input type="text" class="form-control" ng-model="article.name" required placeholder="Pon un nombre llamativo!">
                 </div>
-              </div>
             </div>
-            <div class="col-sm-9">
-              &nbsp;
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <div class="fg-line">
-                  <label class="fg-label">Tags</label>
-                  <!--input type="text" placeholder="Palabras clave para ayudar en las busquedas (ejemplo: tecnologia, aplicaciones, geek)"-->
-                  <tags-input ng-model="article.tags" class="form-control" placeholder="tecnologia, aplicaciones, geek"></tags-input>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <div class="fg-line">
-                  <label class="fg-label">Descripción</label>
-                  <textarea class="form-control" rows="6" ng-model="article.description" required placeholder="Por qué tu producto es el mejor?"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                  <div class="fg-line">
-                    <label class="fg-label">Elíge las secciones a las cuales pertenece este artículo</label>
-                    <div isteven-multi-select
-                      input-model="allsections"
-                      output-model="selectedSections"
-                      button-label="name"
-                      item-label="name"
-                      tick-property="ticked"
-                      translation="multiselecttranslation"
-                      class="btn-group bootstrap-select show-tick">
-                    </div>
-                  </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Precio</label>
+                <input type="text" class="form-control" ng-model="article.price" required placeholder="Precio o valor unitario" ui-number-mask>
               </div>
             </div>
           </div>
+          <div class="col-sm-12">
+            &nbsp;
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <div class="fg-line">
+                <div class="checkbox m-t-0 m-b-0">
+                  <label>
+                    <input type="checkbox" ng-model="article.visible">
+                    <i class="input-helper"></i>
+                    Visible al público?
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            &nbsp;
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Tags</label>
+                <!--input type="text" placeholder="Palabras clave para ayudar en las busquedas (ejemplo: tecnologia, aplicaciones, geek)"-->
+                <tags-input ng-model="article.tags" class="form-control" placeholder="tecnologia, aplicaciones, geek"></tags-input>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="fg-line">
+                <label class="fg-label">Descripción</label>
+                <textarea class="form-control" rows="6" ng-model="article.description" required placeholder="Por qué tu producto es el mejor?"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+                <div class="fg-line">
+                  <label class="fg-label">Elíge las secciones a las cuales pertenece este artículo</label>
+                  <div isteven-multi-select
+                    input-model="allsections"
+                    output-model="selectedSections"
+                    button-label="name"
+                    item-label="name"
+                    tick-property="ticked"
+                    translation="multiselecttranslation"
+                    class="btn-group bootstrap-select show-tick">
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <button class="btn btn-success btn-lg waves-effect pull-right" ng-click="save()">Guardar</button>
+          </div>
+        </div>
 
-          <!--Stats tab -->
-          <div class="row" ng-show="tabs.stats">
+        <!--Stats tab -->
+        <div class="row card-body card-padding" ng-show="tabs.stats">
+          <div class="col-sm-12">
             <p>Algunas estadisticas!!</p>
           </div>
         </div>
       </div>
+
+      <!--Networks tab -->
+      <div class="row card-body card-padding p-t-0" ng-show="tabs.networks">
+        <!--div class="col-sm-12">
+          <p>Tus Redes sociales!!</p-->
+
+          <div class="card">
+            <div class="card-header">
+              <h2><i class="zmdi zmdi-facebook m-r-5"></i> Facebook</h2>
+            </div>
+            <div class="card-body card-padding">
+              Postear !
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2><i class="zmdi zmdi-instagram m-r-5"></i> Instagram</h2>
+            </div>
+            <div class="card-body card-padding">
+              Postear !
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2><i class="zmdi zmdi-google-plus m-r-5"></i> Google+</h2>
+            </div>
+            <div class="card-body card-padding">
+              Postear !
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2><i class="zmdi zmdi-pinterest-box m-r-5"></i> Pinterest</h2>
+            </div>
+            <div class="card-body card-padding">
+              Postear !
+            </div>
+          </div>
+        <!--/div-->
+      </div>
+
     </div>
+
+    <!-- Images block-->
     <div class="col-sm-5">
       <div class="card">
         <div class="card-header">

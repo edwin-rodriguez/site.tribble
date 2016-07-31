@@ -58,11 +58,12 @@ app.controller('ArticleDetailCtrl',['$scope','$stateParams','$location','Article
     description: '',
     tags: [],
     price: 0,
-    sections: []
+    sections: [],
+    visible: true,
   };
   $scope.tabs = {
     info: true,
-    images: false,
+    networks: false,
     stats: false,
   }
 
